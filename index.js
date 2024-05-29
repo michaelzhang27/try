@@ -106,9 +106,7 @@ app.post("/nodemail", async (req, res) => {
         <div style="flex: 1; text-align: right">
           <h3 style="margin: 0">Product Name: ${product.name}</h3>
            <p style="margin: 0">Quantity: ${product.quantity}</p>
-          <p style="margin: 5px 0">Price: $${
-            product.price * product.quantity
-          }</p>
+          <p style="margin: 5px 0">Price: $${product.price}</p>
           <p style="margin: 5px 0">Size: ${product.size}</p>
         </div>
       </div>
@@ -149,3 +147,4 @@ app.post("/nodemail", async (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
