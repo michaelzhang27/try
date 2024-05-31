@@ -46,6 +46,7 @@ app.post("/nodemail", async (req, res) => {
   });
   let product_cards = ``;
   products.forEach((product) => {
+    console.log(product);
     if (product.hasOwnProperty("participantName")) {
       product_cards += `
     <div
@@ -104,9 +105,9 @@ app.post("/nodemail", async (req, res) => {
         <div style="flex: 1; text-align: right">
           <h3 style="margin: 0">Coach Name: ${product.name}</h3>
            <p style="margin: 0">Date: ${product.date}</p>
-          <p style="margin: 5px 0">Time: $${product.time}</p>
+          <p style="margin: 5px 0">Time: ${product.time}</p>
           <p style="margin: 5px 0">Location: ${product.location}</p>
-          <p style="margin: 5px 0">Price: ${product.price}</p>
+          <p style="margin: 5px 0">Price: $${product.price}</p>
         </div>
       </div>
       `;
