@@ -67,7 +67,7 @@ app.post("/nodemail", async (req, res) => {
         <img
           src="${product.imageURL}"
           alt="Package Image"
-          style="width: 100px; height: auto; margin-right: 20px"
+          style="width: 150px; height: 150px; margin-right: 20px"
         />
         <div style="flex: 1; text-align: right">
         <h3 style="margin: 0">Package Name: ${product.name}</h3>
@@ -82,6 +82,36 @@ app.post("/nodemail", async (req, res) => {
         </div>
       </div>
     `;
+    } else if (product.hasOwnProperty("isIndividual")) {
+      product_cards += `
+       <div
+        style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: #fff;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          margin: 20px 0;
+          padding: 10px;
+          border-radius: 5px;
+          width: 80%;
+          margin: 20px auto;
+        "
+      >
+        <img
+          src="${product.imageURL}"
+          alt="Product Image"
+          style="width: 150px; height: 150px; margin-right: 20px"
+        />
+        <div style="flex: 1; text-align: right">
+          <h3 style="margin: 0">Coach Name: ${product.name}</h3>
+           <p style="margin: 0">Date: ${product.date}</p>
+          <p style="margin: 5px 0">Time: $${product.time}</p>
+          <p style="margin: 5px 0">Location: ${product.location}</p>
+          <p style="margin: 5px 0">Price: ${product.price}</p>
+        </div>
+      </div>
+      `;
     } else {
       product_cards += `
       <div
@@ -101,7 +131,7 @@ app.post("/nodemail", async (req, res) => {
         <img
           src="${product.imageURL}"
           alt="Product Image"
-          style="width: 100px; height: auto; margin-right: 20px"
+          style="width: 150px; height: 150px; margin-right: 20px"
         />
         <div style="flex: 1; text-align: right">
           <h3 style="margin: 0">Product Name: ${product.name}</h3>
@@ -115,7 +145,7 @@ app.post("/nodemail", async (req, res) => {
   });
   const options = {
     from: "Double Trouble Training <doubletroubletrainingapp@gmail.com>",
-    to: [email, "doubletroubletrainingapp@gmail.com"],
+    to: email,
     subject: "Double Trouble Training Order Confirmation for " + name,
     html:
       `<div
@@ -147,4 +177,3 @@ app.post("/nodemail", async (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
